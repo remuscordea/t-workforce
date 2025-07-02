@@ -1,33 +1,33 @@
-import type { Theme, Components } from "@mui/material/styles";
+import type { Theme, Components } from '@mui/material/styles';
 
-import { alpha } from "@mui/material/styles";
+import { varAlpha } from 'minimal-shared/utils';
 
-import SvgIcon from "@mui/material/SvgIcon";
+import SvgIcon from '@mui/material/SvgIcon';
 
 // ----------------------------------------------------------------------
 
-const MuiBackdrop: Components<Theme>["MuiBackdrop"] = {
+const MuiBackdrop: Components<Theme>['MuiBackdrop'] = {
   styleOverrides: {
     root: ({ theme }) => ({
-      backgroundColor: alpha(theme.palette.grey[900], 0.8),
+      backgroundColor: varAlpha(theme.vars.palette.grey['900Channel'], 0.8),
     }),
     invisible: {
-      background: "transparent",
+      background: 'transparent',
     },
   },
 };
 
-const MuiButton: Components<Theme>["MuiButton"] = {
+const MuiButton: Components<Theme>['MuiButton'] = {
   defaultProps: {
     disableElevation: true,
   },
   styleOverrides: {
     containedInherit: ({ theme }) => ({
-      color: theme.palette.common.white,
-      backgroundColor: theme.palette.grey[800],
-      "&:hover": {
-        color: theme.palette.common.white,
-        backgroundColor: theme.palette.grey[800],
+      color: theme.vars.palette.common.white,
+      backgroundColor: theme.vars.palette.grey[800],
+      '&:hover': {
+        color: theme.vars.palette.common.white,
+        backgroundColor: theme.vars.palette.grey[800],
       },
     }),
     sizeLarge: {
@@ -36,21 +36,21 @@ const MuiButton: Components<Theme>["MuiButton"] = {
   },
 };
 
-const MuiCard: Components<Theme>["MuiCard"] = {
+const MuiCard: Components<Theme>['MuiCard'] = {
   styleOverrides: {
     root: ({ theme }) => ({
       zIndex: 0,
-      position: "relative",
-      boxShadow: theme.customShadows.card,
+      position: 'relative',
+      boxShadow: theme.vars.customShadows.card,
       borderRadius: theme.shape.borderRadius * 2,
     }),
   },
 };
 
-const MuiCardHeader: Components<Theme>["MuiCardHeader"] = {
+const MuiCardHeader: Components<Theme>['MuiCardHeader'] = {
   defaultProps: {
-    titleTypographyProps: { variant: "h6" },
-    subheaderTypographyProps: { variant: "body2" },
+    titleTypographyProps: { variant: 'h6' },
+    subheaderTypographyProps: { variant: 'body2' },
   },
   styleOverrides: {
     root: ({ theme }) => ({
@@ -59,36 +59,36 @@ const MuiCardHeader: Components<Theme>["MuiCardHeader"] = {
   },
 };
 
-const MuiOutlinedInput: Components<Theme>["MuiOutlinedInput"] = {
+const MuiOutlinedInput: Components<Theme>['MuiOutlinedInput'] = {
   styleOverrides: {
     notchedOutline: ({ theme }) => ({
-      borderColor: alpha(theme.palette.grey[500], 0.2),
+      borderColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.2),
     }),
   },
 };
 
-const MuiPaper: Components<Theme>["MuiPaper"] = {
+const MuiPaper: Components<Theme>['MuiPaper'] = {
   defaultProps: { elevation: 0 },
   styleOverrides: {
-    root: { backgroundImage: "none" },
+    root: { backgroundImage: 'none' },
     outlined: ({ theme }) => ({
-      borderColor: alpha(theme.palette.grey[500], 0.16),
+      borderColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.16),
     }),
   },
 };
 
-const MuiTableCell: Components<Theme>["MuiTableCell"] = {
+const MuiTableCell: Components<Theme>['MuiTableCell'] = {
   styleOverrides: {
     head: ({ theme }) => ({
       fontSize: theme.typography.pxToRem(14),
-      color: theme.palette.text.secondary,
+      color: theme.vars.palette.text.secondary,
       fontWeight: theme.typography.fontWeightSemiBold,
-      backgroundColor: theme.palette.background.neutral,
+      backgroundColor: theme.vars.palette.background.neutral,
     }),
   },
 };
 
-const MuiMenuItem: Components<Theme>["MuiMenuItem"] = {
+const MuiMenuItem: Components<Theme>['MuiMenuItem'] = {
   styleOverrides: {
     root: ({ theme }) => ({
       ...theme.typography.body2,
@@ -96,11 +96,11 @@ const MuiMenuItem: Components<Theme>["MuiMenuItem"] = {
   },
 };
 
-const MuiLink: Components<Theme>["MuiLink"] = {
-  defaultProps: { underline: "hover" },
+const MuiLink: Components<Theme>['MuiLink'] = {
+  defaultProps: { underline: 'hover' },
 };
 
-const MuiFormControlLabel: Components<Theme>["MuiFormControlLabel"] = {
+const MuiFormControlLabel: Components<Theme>['MuiFormControlLabel'] = {
   styleOverrides: {
     label: ({ theme }) => ({
       ...theme.typography.body2,
@@ -108,9 +108,9 @@ const MuiFormControlLabel: Components<Theme>["MuiFormControlLabel"] = {
   },
 };
 
-const MuiCheckbox: Components<Theme>["MuiCheckbox"] = {
+const MuiCheckbox: Components<Theme>['MuiCheckbox'] = {
   defaultProps: {
-    size: "small",
+    size: 'small',
     icon: (
       <SvgIcon>
         <path d="M17.9 2.318A5 5 0 0 1 22.895 7.1l.005.217v10a5 5 0 0 1-4.783 4.995l-.217.005h-10a5 5 0 0 1-4.995-4.783l-.005-.217v-10a5 5 0 0 1 4.783-4.996l.217-.004h10Zm-.5 1.5h-9a4 4 0 0 0-4 4v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4Z" />
@@ -129,9 +129,9 @@ const MuiCheckbox: Components<Theme>["MuiCheckbox"] = {
   },
 };
 
-const MuiRadio: Components<Theme>["MuiRadio"] = {
+const MuiRadio: Components<Theme>['MuiRadio'] = {
   defaultProps: {
-    size: "small",
+    size: 'small',
     icon: (
       <SvgIcon>
         <path

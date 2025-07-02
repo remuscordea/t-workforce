@@ -1,13 +1,11 @@
-"use client";
+import type { CardProps } from '@mui/material/Card';
+import type { ChartOptions } from 'src/components/chart';
 
-import type { CardProps } from "@mui/material/Card";
-import type { ChartOptions } from "@/components/chart";
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import { useTheme, alpha as hexAlpha } from '@mui/material/styles';
 
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import { useTheme, alpha as hexAlpha } from "@mui/material/styles";
-
-import { Chart, useChart } from "@/components/chart";
+import { Chart, useChart } from 'src/components/chart';
 
 // ----------------------------------------------------------------------
 
@@ -25,13 +23,7 @@ type Props = CardProps & {
   };
 };
 
-export function AnalyticsWebsiteVisits({
-  title,
-  subheader,
-  chart,
-  sx,
-  ...other
-}: Props) {
+export function AnalyticsWebsiteVisits({ title, subheader, chart, sx, ...other }: Props) {
   const theme = useTheme();
 
   const chartColors = chart.colors ?? [
@@ -41,7 +33,7 @@ export function AnalyticsWebsiteVisits({
 
   const chartOptions = useChart({
     colors: chartColors,
-    stroke: { width: 2, colors: ["transparent"] },
+    stroke: { width: 2, colors: ['transparent'] },
     xaxis: { categories: chart.categories },
     legend: { show: true },
     tooltip: { y: { formatter: (value: number) => `${value} visits` } },

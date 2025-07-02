@@ -1,20 +1,20 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Pagination from "@mui/material/Pagination";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Pagination from '@mui/material/Pagination';
 
-import { DashboardContent } from "@/layouts/dashboard";
+import { DashboardContent } from 'src/layouts/dashboard';
 
-import { Iconify } from "@/components/iconify";
+import { Iconify } from 'src/components/iconify';
 
-import { PostItem } from "../post-item";
-import { PostSort } from "../post-sort";
-import { PostSearch } from "../post-search";
+import { PostItem } from '../post-item';
+import { PostSort } from '../post-sort';
+import { PostSearch } from '../post-search';
 
-import type { IPostItem } from "../post-item";
+import type { IPostItem } from '../post-item';
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ type Props = {
 };
 
 export function BlogView({ posts }: Props) {
-  const [sortBy, setSortBy] = useState("latest");
+  const [sortBy, setSortBy] = useState('latest');
 
   const handleSort = useCallback((newSort: string) => {
     setSortBy(newSort);
@@ -34,8 +34,8 @@ export function BlogView({ posts }: Props) {
       <Box
         sx={{
           mb: 5,
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
         <Typography variant="h4" sx={{ flexGrow: 1 }}>
@@ -53,9 +53,9 @@ export function BlogView({ posts }: Props) {
       <Box
         sx={{
           mb: 5,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
       >
         <PostSearch posts={posts} />
@@ -63,9 +63,9 @@ export function BlogView({ posts }: Props) {
           sortBy={sortBy}
           onSort={handleSort}
           options={[
-            { value: "latest", label: "Latest" },
-            { value: "popular", label: "Popular" },
-            { value: "oldest", label: "Oldest" },
+            { value: 'latest', label: 'Latest' },
+            { value: 'popular', label: 'Popular' },
+            { value: 'oldest', label: 'Oldest' },
           ]}
         />
       </Box>
@@ -84,17 +84,13 @@ export function BlogView({ posts }: Props) {
                 md: latestPostLarge ? 6 : 3,
               }}
             >
-              <PostItem
-                post={post}
-                latestPost={latestPost}
-                latestPostLarge={latestPostLarge}
-              />
+              <PostItem post={post} latestPost={latestPost} latestPostLarge={latestPostLarge} />
             </Grid>
           );
         })}
       </Grid>
 
-      <Pagination count={10} color="primary" sx={{ mt: 8, mx: "auto" }} />
+      <Pagination count={10} color="primary" sx={{ mt: 8, mx: 'auto' }} />
     </DashboardContent>
   );
 }

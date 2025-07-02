@@ -1,17 +1,17 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputAdornment from "@mui/material/InputAdornment";
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputAdornment from '@mui/material/InputAdornment';
 
-import { useRouter } from "@/routes/hooks";
+import { useRouter } from 'src/routes/hooks';
 
-import { Iconify } from "@/components/iconify";
+import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -21,15 +21,15 @@ export function SignInView() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSignIn = useCallback(() => {
-    router.push("/");
+    router.push('/');
   }, [router]);
 
   const renderForm = (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "flex-end",
-        flexDirection: "column",
+        display: 'flex',
+        alignItems: 'flex-end',
+        flexDirection: 'column',
       }}
     >
       <TextField
@@ -52,21 +52,14 @@ export function SignInView() {
         name="password"
         label="Password"
         defaultValue="@demo1234"
-        type={showPassword ? "text" : "password"}
+        type={showPassword ? 'text' : 'password'}
         slotProps={{
           inputLabel: { shrink: true },
           input: {
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton
-                  onClick={() => setShowPassword(!showPassword)}
-                  edge="end"
-                >
-                  <Iconify
-                    icon={
-                      showPassword ? "solar:eye-bold" : "solar:eye-closed-bold"
-                    }
-                  />
+                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                  <Iconify icon={showPassword ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
                 </IconButton>
               </InputAdornment>
             ),
@@ -93,9 +86,9 @@ export function SignInView() {
       <Box
         sx={{
           gap: 1.5,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
           mb: 5,
         }}
       >
@@ -103,7 +96,7 @@ export function SignInView() {
         <Typography
           variant="body2"
           sx={{
-            color: "text.secondary",
+            color: 'text.secondary',
           }}
         >
           Don’t have an account?
@@ -113,12 +106,10 @@ export function SignInView() {
         </Typography>
       </Box>
       {renderForm}
-      <Divider
-        sx={{ my: 3, "&::before, &::after": { borderTopStyle: "dashed" } }}
-      >
+      <Divider sx={{ my: 3, '&::before, &::after': { borderTopStyle: 'dashed' } }}>
         <Typography
           variant="overline"
-          sx={{ color: "text.secondary", fontWeight: "fontWeightMedium" }}
+          sx={{ color: 'text.secondary', fontWeight: 'fontWeightMedium' }}
         >
           OR
         </Typography>
@@ -126,8 +117,8 @@ export function SignInView() {
       <Box
         sx={{
           gap: 1,
-          display: "flex",
-          justifyContent: "center",
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
         <IconButton color="inherit">

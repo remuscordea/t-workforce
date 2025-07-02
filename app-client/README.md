@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Minimal UI ([Free version](https://free.minimals.cc/))
 
-## Getting Started
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-First, run the development server:
+![preview](public/assets/images/minimal-free-preview.jpg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+> Free React Admin Dashboard made with Material-UI components and React + Vite.js.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Dashboard](https://free.minimals.cc/)
+- [Users](https://free.minimals.cc/user)
+- [Products](https://free.minimals.cc/products)
+- [Blog](https://free.minimals.cc/blog)
+- [Sign in](https://free.minimals.cc/sign-in)
+- [Not found](https://free.minimals.cc/404)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Quick start
 
-## Learn More
+- Clone the repo: `git clone https://github.com/minimal-ui-kit/material-kit-react.git`
+- Recommended: `Node.js v20.x`
+- **Install:** `npm i` or `yarn install`
+- **Start:** `npm run dev` or `yarn dev`
+- **Build:** `npm run build` or `yarn build`
+- Open browser: `http://localhost:3039`
 
-To learn more about Next.js, take a look at the following resources:
+## Upgrade to PRO Version
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Minimal Free                | [Minimal Pro](https://material-ui.com/store/items/minimal-dashboard/)                                   |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------ |
+| **6** Pages                 | **70+** Pages                                                                                           |
+| **Partial** theme customize | **Fully** theme customize                                                                               |
+| -                           | **Next.js** version                                                                                     |
+| -                           | **TypeScript** version (Standard Plus and Extended license)                                             |
+| -                           | Design **Figma** file (Standard Plus and Extended license)                                              |
+| -                           | Authentication with **Amplify**, **Auth0**, **JWT**, **Firebase** and **Supabase**                      |
+| -                           | Light/dark mode, right-to-left, form validation... ([+more components](https://minimals.cc/components)) |
+| -                           | Complete users flows                                                                                    |
+| -                           | 1 year of free updates / 6 months of technical support                                                  |
+| -                           | Learn more: [Package & license](https://docs.minimals.cc/package)                                       |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+Distributed under the [MIT](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) license.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact us
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Email: support@minimals.cc

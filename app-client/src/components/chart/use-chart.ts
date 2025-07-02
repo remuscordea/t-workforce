@@ -1,17 +1,16 @@
-import type { Theme } from "@mui/material/styles";
+import type { Theme } from '@mui/material/styles';
 
-import { merge } from "es-toolkit";
-import { alpha } from "@mui/material/styles";
+import { merge } from 'es-toolkit';
+import { varAlpha } from 'minimal-shared/utils';
 
-import { useTheme } from "@mui/material/styles";
+import { useTheme } from '@mui/material/styles';
 
-import type { ChartOptions } from "./types";
+import type { ChartOptions } from './types';
 
 // ----------------------------------------------------------------------
 
 export function useChart(updatedOptions?: ChartOptions): ChartOptions {
   const theme = useTheme();
-  if (!theme) throw new Error("Missing MUI ThemeProvider");
 
   const baseOptions = baseChartOptions(theme) ?? {};
 
@@ -23,15 +22,15 @@ export function useChart(updatedOptions?: ChartOptions): ChartOptions {
 const baseChartOptions = (theme: Theme): ChartOptions => {
   const LABEL_TOTAL = {
     show: true,
-    label: "Total",
-    color: theme.palette.text.secondary,
+    label: 'Total',
+    color: theme.vars.palette.text.secondary,
     fontSize: theme.typography.subtitle2.fontSize as string,
     fontWeight: theme.typography.subtitle2.fontWeight,
   };
 
   const LABEL_VALUE = {
     offsetY: 8,
-    color: theme.palette.text.primary,
+    color: theme.vars.palette.text.primary,
     fontSize: theme.typography.h4.fontSize as string,
     fontWeight: theme.typography.h4.fontWeight,
   };
@@ -46,7 +45,7 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
       zoom: { enabled: false },
       parentHeightOffset: 0,
       fontFamily: theme.typography.fontFamily,
-      foreColor: theme.palette.text.disabled,
+      foreColor: theme.vars.palette.text.disabled,
       animations: {
         enabled: true,
         speed: 360,
@@ -76,8 +75,8 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
      * https://apexcharts.com/docs/options/states/
      *************************************** */
     states: {
-      hover: { filter: { type: "darken" } },
-      active: { filter: { type: "darken" } },
+      hover: { filter: { type: 'darken' } },
+      active: { filter: { type: 'darken' } },
     },
 
     /** **************************************
@@ -87,7 +86,7 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
     fill: {
       opacity: 1,
       gradient: {
-        type: "vertical",
+        type: 'vertical',
         shadeIntensity: 0,
         opacityFrom: 0.4,
         opacityTo: 0,
@@ -105,7 +104,7 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
      * Stroke
      * https://apexcharts.com/docs/options/stroke/
      *************************************** */
-    stroke: { width: 2.5, curve: "smooth", lineCap: "round" },
+    stroke: { width: 2.5, curve: 'smooth', lineCap: 'round' },
 
     /** **************************************
      * Grid
@@ -113,7 +112,7 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
      *************************************** */
     grid: {
       strokeDashArray: 3,
-      borderColor: theme.palette.divider,
+      borderColor: theme.vars.palette.divider,
       padding: { top: 0, right: 0, bottom: 0 },
       xaxis: { lines: { show: false } },
     },
@@ -132,13 +131,13 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
      *************************************** */
     markers: {
       size: 0,
-      strokeColors: theme.palette.background.paper,
+      strokeColors: theme.vars.palette.background.paper,
     },
 
     /** **************************************
      * Tooltip
      *************************************** */
-    tooltip: { theme: "false", fillSeriesColor: false, x: { show: true } },
+    tooltip: { theme: 'false', fillSeriesColor: false, x: { show: true } },
 
     /** **************************************
      * Legend
@@ -146,12 +145,12 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
      *************************************** */
     legend: {
       show: false,
-      position: "top",
+      position: 'top',
       fontWeight: 500,
-      fontSize: "13px",
-      horizontalAlign: "right",
-      markers: { shape: "circle" },
-      labels: { colors: theme.palette.text.primary },
+      fontSize: '13px',
+      horizontalAlign: 'right',
+      markers: { shape: 'circle' },
+      labels: { colors: theme.vars.palette.text.primary },
       itemMargin: { horizontal: 8, vertical: 8 },
     },
 
@@ -163,34 +162,24 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
        * bar
        * https://apexcharts.com/docs/options/plotoptions/bar/
        */
-      bar: {
-        borderRadius: 4,
-        columnWidth: "48%",
-        borderRadiusApplication: "end",
-      },
+      bar: { borderRadius: 4, columnWidth: '48%', borderRadiusApplication: 'end' },
       /**
        * pie + donut
        * https://apexcharts.com/docs/options/plotoptions/pie/
        */
       pie: {
-        donut: {
-          labels: {
-            show: true,
-            value: { ...LABEL_VALUE },
-            total: { ...LABEL_TOTAL },
-          },
-        },
+        donut: { labels: { show: true, value: { ...LABEL_VALUE }, total: { ...LABEL_TOTAL } } },
       },
       /**
        * radialBar
        * https://apexcharts.com/docs/options/plotoptions/radialbar/
        */
       radialBar: {
-        hollow: { margin: -8, size: "100%" },
+        hollow: { margin: -8, size: '100%' },
         track: {
           margin: -8,
-          strokeWidth: "50%",
-          background: alpha(theme.palette.grey[500], 0.16),
+          strokeWidth: '50%',
+          background: varAlpha(theme.vars.palette.grey['500Channel'], 0.16),
         },
         dataLabels: { value: { ...LABEL_VALUE }, total: { ...LABEL_TOTAL } },
       },
@@ -200,9 +189,9 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
        */
       radar: {
         polygons: {
-          fill: { colors: ["transparent"] },
-          strokeColors: theme.palette.divider,
-          connectorColors: theme.palette.divider,
+          fill: { colors: ['transparent'] },
+          strokeColors: theme.vars.palette.divider,
+          connectorColors: theme.vars.palette.divider,
         },
       },
       /**
@@ -210,8 +199,8 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
        * https://apexcharts.com/docs/options/plotoptions/polararea/
        */
       polarArea: {
-        rings: { strokeColor: theme.palette.divider },
-        spokes: { connectorColors: theme.palette.divider },
+        rings: { strokeColor: theme.vars.palette.divider },
+        spokes: { connectorColors: theme.vars.palette.divider },
       },
       /**
        * heatmap
@@ -227,13 +216,11 @@ const baseChartOptions = (theme: Theme): ChartOptions => {
     responsive: [
       {
         breakpoint: theme.breakpoints.values.sm, // sm ~ 600
-        options: {
-          plotOptions: { bar: { borderRadius: 3, columnWidth: "80%" } },
-        },
+        options: { plotOptions: { bar: { borderRadius: 3, columnWidth: '80%' } } },
       },
       {
         breakpoint: theme.breakpoints.values.md, // md ~ 900
-        options: { plotOptions: { bar: { columnWidth: "60%" } } },
+        options: { plotOptions: { bar: { columnWidth: '60%' } } },
       },
     ],
   };

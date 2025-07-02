@@ -1,18 +1,18 @@
-import type { BoxProps } from "@mui/material/Box";
-import type { CardProps } from "@mui/material/Card";
+import type { BoxProps } from '@mui/material/Box';
+import type { CardProps } from '@mui/material/Card';
 
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import Card from "@mui/material/Card";
-import Button from "@mui/material/Button";
-import Avatar from "@mui/material/Avatar";
-import CardHeader from "@mui/material/CardHeader";
-import ListItemText from "@mui/material/ListItemText";
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import CardHeader from '@mui/material/CardHeader';
+import ListItemText from '@mui/material/ListItemText';
 
-import { fToNow } from "@/utils/format-time";
+import { fToNow } from 'src/utils/format-time';
 
-import { Iconify } from "@/components/iconify";
-import { Scrollbar } from "@/components/scrollbar";
+import { Iconify } from 'src/components/iconify';
+import { Scrollbar } from 'src/components/scrollbar';
 
 // ----------------------------------------------------------------------
 
@@ -41,17 +41,11 @@ export function AnalyticsNews({ title, subheader, list, sx, ...other }: Props) {
         </Box>
       </Scrollbar>
 
-      <Box sx={{ p: 2, textAlign: "right" }}>
+      <Box sx={{ p: 2, textAlign: 'right' }}>
         <Button
           size="small"
           color="inherit"
-          endIcon={
-            <Iconify
-              icon="eva:arrow-ios-forward-fill"
-              width={18}
-              sx={{ ml: -0.5 }}
-            />
-          }
+          endIcon={<Iconify icon="eva:arrow-ios-forward-fill" width={18} sx={{ ml: -0.5 }} />}
         >
           View all
         </Button>
@@ -63,7 +57,7 @@ export function AnalyticsNews({ title, subheader, list, sx, ...other }: Props) {
 // ----------------------------------------------------------------------
 
 type ItemProps = BoxProps & {
-  item: Props["list"][number];
+  item: Props['list'][number];
 };
 
 function Item({ item, sx, ...other }: ItemProps) {
@@ -74,9 +68,9 @@ function Item({ item, sx, ...other }: ItemProps) {
           py: 2,
           px: 3,
           gap: 2,
-          display: "flex",
-          alignItems: "center",
-          borderBottom: `dashed 1px ${theme.palette.divider}`,
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: `dashed 1px ${theme.vars.palette.divider}`,
         }),
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
@@ -101,9 +95,7 @@ function Item({ item, sx, ...other }: ItemProps) {
         }}
       />
 
-      <Box
-        sx={{ flexShrink: 0, typography: "caption", color: "text.disabled" }}
-      >
+      <Box sx={{ flexShrink: 0, typography: 'caption', color: 'text.disabled' }}>
         {fToNow(item.postedAt)}
       </Box>
     </Box>

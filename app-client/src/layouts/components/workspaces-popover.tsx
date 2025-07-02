@@ -1,16 +1,16 @@
-import type { ButtonBaseProps } from "@mui/material/ButtonBase";
+import type { ButtonBaseProps } from '@mui/material/ButtonBase';
 
-import { useState, useCallback } from "react";
-import { alpha } from "@mui/material/styles";
+import { useState, useCallback } from 'react';
+import { varAlpha } from 'minimal-shared/utils';
 
-import Box from "@mui/material/Box";
-import Popover from "@mui/material/Popover";
-import MenuList from "@mui/material/MenuList";
-import ButtonBase from "@mui/material/ButtonBase";
-import MenuItem, { menuItemClasses } from "@mui/material/MenuItem";
+import Box from '@mui/material/Box';
+import Popover from '@mui/material/Popover';
+import MenuList from '@mui/material/MenuList';
+import ButtonBase from '@mui/material/ButtonBase';
+import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 
-import { Label } from "@/components/label";
-import { Iconify } from "@/components/iconify";
+import { Label } from 'src/components/label';
+import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -23,23 +23,14 @@ export type WorkspacesPopoverProps = ButtonBaseProps & {
   }[];
 };
 
-export function WorkspacesPopover({
-  data = [],
-  sx,
-  ...other
-}: WorkspacesPopoverProps) {
+export function WorkspacesPopover({ data = [], sx, ...other }: WorkspacesPopoverProps) {
   const [workspace, setWorkspace] = useState(data[0]);
 
-  const [openPopover, setOpenPopover] = useState<HTMLButtonElement | null>(
-    null
-  );
+  const [openPopover, setOpenPopover] = useState<HTMLButtonElement | null>(null);
 
-  const handleOpenPopover = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      setOpenPopover(event.currentTarget);
-    },
-    []
-  );
+  const handleOpenPopover = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+    setOpenPopover(event.currentTarget);
+  }, []);
 
   const handleClosePopover = useCallback(() => {
     setOpenPopover(null);
@@ -54,16 +45,11 @@ export function WorkspacesPopover({
   );
 
   const renderAvatar = (alt: string, src: string) => (
-    <Box
-      component="img"
-      alt={alt}
-      src={src}
-      sx={{ width: 24, height: 24, borderRadius: "50%" }}
-    />
+    <Box component="img" alt={alt} src={src} sx={{ width: 24, height: 24, borderRadius: '50%' }} />
   );
 
   const renderLabel = (plan: string) => (
-    <Label color={plan === "Free" ? "default" : "info"}>{plan}</Label>
+    <Label color={plan === 'Free' ? 'default' : 'info'}>{plan}</Label>
   );
 
   return (
@@ -78,9 +64,9 @@ export function WorkspacesPopover({
           pr: 1.5,
           width: 1,
           borderRadius: 1.5,
-          textAlign: "left",
-          justifyContent: "flex-start",
-          bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
+          textAlign: 'left',
+          justifyContent: 'flex-start',
+          bgcolor: (theme) => varAlpha(theme.vars.palette.grey['500Channel'], 0.08),
           ...sx,
         }}
         {...other}
@@ -91,43 +77,35 @@ export function WorkspacesPopover({
           sx={{
             gap: 1,
             flexGrow: 1,
-            display: "flex",
-            alignItems: "center",
-            typography: "body2",
-            fontWeight: "fontWeightSemiBold",
+            display: 'flex',
+            alignItems: 'center',
+            typography: 'body2',
+            fontWeight: 'fontWeightSemiBold',
           }}
         >
           {workspace?.name}
           {renderLabel(workspace?.plan)}
         </Box>
 
-        <Iconify
-          width={16}
-          icon="carbon:chevron-sort"
-          sx={{ color: "text.disabled" }}
-        />
+        <Iconify width={16} icon="carbon:chevron-sort" sx={{ color: 'text.disabled' }} />
       </ButtonBase>
 
-      <Popover
-        open={!!openPopover}
-        anchorEl={openPopover}
-        onClose={handleClosePopover}
-      >
+      <Popover open={!!openPopover} anchorEl={openPopover} onClose={handleClosePopover}>
         <MenuList
           disablePadding
           sx={{
             p: 0.5,
             gap: 0.5,
             width: 260,
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
             [`& .${menuItemClasses.root}`]: {
               p: 1.5,
               gap: 1.5,
               borderRadius: 0.75,
               [`&.${menuItemClasses.selected}`]: {
-                bgcolor: "action.selected",
-                fontWeight: "fontWeightSemiBold",
+                bgcolor: 'action.selected',
+                fontWeight: 'fontWeightSemiBold',
               },
             },
           }}

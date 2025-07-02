@@ -1,19 +1,19 @@
-import type { CardProps } from "@mui/material/Card";
-import type { IconifyName } from "@/components/iconify";
+import type { CardProps } from '@mui/material/Card';
+import type { IconifyName } from 'src/components/iconify';
 
-import { alpha } from "@mui/material/styles";
+import { varAlpha } from 'minimal-shared/utils';
 
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import Card from "@mui/material/Card";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
-import { fDate } from "@/utils/format-time";
-import { fShortenNumber } from "@/utils/format-number";
+import { fDate } from 'src/utils/format-time';
+import { fShortenNumber } from 'src/utils/format-number';
 
-import { Iconify } from "@/components/iconify";
-import { SvgColor } from "@/components/svg-color";
+import { Iconify } from 'src/components/iconify';
+import { SvgColor } from 'src/components/svg-color';
 
 // ----------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ export function PostItem({
         left: 24,
         zIndex: 9,
         bottom: -24,
-        position: "absolute",
+        position: 'absolute',
         ...((latestPostLarge || latestPost) && {
           top: 24,
         }),
@@ -67,13 +67,13 @@ export function PostItem({
       underline="hover"
       sx={{
         height: 44,
-        overflow: "hidden",
+        overflow: 'hidden',
         WebkitLineClamp: 2,
-        display: "-webkit-box",
-        WebkitBoxOrient: "vertical",
-        ...(latestPostLarge && { typography: "h5", height: 60 }),
+        display: '-webkit-box',
+        WebkitBoxOrient: 'vertical',
+        ...(latestPostLarge && { typography: 'h5', height: 60 }),
         ...((latestPostLarge || latestPost) && {
-          color: "common.white",
+          color: 'common.white',
         }),
       }}
     >
@@ -86,35 +86,29 @@ export function PostItem({
       sx={{
         mt: 3,
         gap: 1.5,
-        display: "flex",
-        flexWrap: "wrap",
-        color: "text.disabled",
-        justifyContent: "flex-end",
+        display: 'flex',
+        flexWrap: 'wrap',
+        color: 'text.disabled',
+        justifyContent: 'flex-end',
       }}
     >
       {[
-        { number: post.totalComments, icon: "solar:chat-round-dots-bold" },
-        { number: post.totalViews, icon: "solar:eye-bold" },
-        { number: post.totalShares, icon: "solar:share-bold" },
+        { number: post.totalComments, icon: 'solar:chat-round-dots-bold' },
+        { number: post.totalViews, icon: 'solar:eye-bold' },
+        { number: post.totalShares, icon: 'solar:share-bold' },
       ].map((info, _index) => (
         <Box
           key={_index}
           sx={{
-            display: "flex",
+            display: 'flex',
             ...((latestPostLarge || latestPost) && {
               opacity: 0.64,
-              color: "common.white",
+              color: 'common.white',
             }),
           }}
         >
-          <Iconify
-            width={16}
-            icon={info.icon as IconifyName}
-            sx={{ mr: 0.5 }}
-          />
-          <Typography variant="caption">
-            {fShortenNumber(info.number)}
-          </Typography>
+          <Iconify width={16} icon={info.icon as IconifyName} sx={{ mr: 0.5 }} />
+          <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
         </Box>
       ))}
     </Box>
@@ -129,8 +123,8 @@ export function PostItem({
         top: 0,
         width: 1,
         height: 1,
-        objectFit: "cover",
-        position: "absolute",
+        objectFit: 'cover',
+        position: 'absolute',
       }}
     />
   );
@@ -141,10 +135,10 @@ export function PostItem({
       component="div"
       sx={{
         mb: 1,
-        color: "text.disabled",
+        color: 'text.disabled',
         ...((latestPostLarge || latestPost) && {
           opacity: 0.48,
-          color: "common.white",
+          color: 'common.white',
         }),
       }}
     >
@@ -161,9 +155,9 @@ export function PostItem({
         zIndex: 9,
         height: 36,
         bottom: -16,
-        position: "absolute",
-        color: "background.paper",
-        ...((latestPostLarge || latestPost) && { display: "none" }),
+        position: 'absolute',
+        color: 'background.paper',
+        ...((latestPostLarge || latestPost) && { display: 'none' }),
       }}
     />
   );
@@ -172,23 +166,23 @@ export function PostItem({
     <Card sx={sx} {...other}>
       <Box
         sx={(theme) => ({
-          position: "relative",
-          pt: "calc(100% * 3 / 4)",
+          position: 'relative',
+          pt: 'calc(100% * 3 / 4)',
           ...((latestPostLarge || latestPost) && {
-            pt: "calc(100% * 4 / 3)",
-            "&:after": {
+            pt: 'calc(100% * 4 / 3)',
+            '&:after': {
               top: 0,
               content: "''",
-              width: "100%",
-              height: "100%",
-              position: "absolute",
-              bgcolor: alpha(theme.palette.grey[900], 0.72),
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              bgcolor: varAlpha(theme.palette.grey['900Channel'], 0.72),
             },
           }),
           ...(latestPostLarge && {
             pt: {
-              xs: "calc(100% * 4 / 3)",
-              sm: "calc(100% * 3 / 4.66)",
+              xs: 'calc(100% * 4 / 3)',
+              sm: 'calc(100% * 3 / 4.66)',
             },
           }),
         })}
@@ -204,7 +198,7 @@ export function PostItem({
           ...((latestPostLarge || latestPost) && {
             width: 1,
             bottom: 0,
-            position: "absolute",
+            position: 'absolute',
           }),
         })}
       >

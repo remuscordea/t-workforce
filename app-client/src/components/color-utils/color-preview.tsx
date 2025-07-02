@@ -1,9 +1,8 @@
-import { mergeClasses } from "minimal-shared/utils";
-import { alpha } from "@mui/material/styles";
+import { varAlpha, mergeClasses } from 'minimal-shared/utils';
 
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles';
 
-import { colorPreviewClasses } from "./classes";
+import { colorPreviewClasses } from './classes';
 
 // ----------------------------------------------------------------------
 
@@ -12,9 +11,7 @@ export type ColorPreviewSlotProps = {
   label?: React.ComponentProps<typeof ItemLabel>;
 };
 
-export type ColorPreviewProps = React.ComponentProps<
-  typeof ColorPreviewRoot
-> & {
+export type ColorPreviewProps = React.ComponentProps<typeof ColorPreviewRoot> & {
   limit?: number;
   size?: number;
   gap?: number;
@@ -48,12 +45,12 @@ export function ColorPreview({
           {...slotProps?.item}
           sx={[
             {
-              "--item-color": color,
-              "--item-size": `${size}px`,
-              "--item-gap": `${-gap}px`,
+              '--item-color': color,
+              '--item-size': `${size}px`,
+              '--item-gap': `${-gap}px`,
             },
             ...(Array.isArray(slotProps?.item?.sx)
-              ? slotProps.item?.sx ?? []
+              ? (slotProps.item?.sx ?? [])
               : [slotProps?.item?.sx]),
           ]}
         />
@@ -71,26 +68,23 @@ export function ColorPreview({
 
 // ----------------------------------------------------------------------
 
-const ColorPreviewRoot = styled("ul")(() => ({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "flex-end",
+const ColorPreviewRoot = styled('ul')(() => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
 }));
 
-const ItemRoot = styled("li")(({ theme }) => ({
-  borderRadius: "50%",
-  width: "var(--item-size)",
-  height: "var(--item-size)",
-  marginLeft: "var(--item-gap)",
-  backgroundColor: "var(--item-color)",
-  border: `solid 2px ${theme.palette.background.paper}`,
-  boxShadow: `inset -1px 1px 2px ${alpha(
-    theme.palette.common.blackChannel,
-    0.24
-  )}`,
+const ItemRoot = styled('li')(({ theme }) => ({
+  borderRadius: '50%',
+  width: 'var(--item-size)',
+  height: 'var(--item-size)',
+  marginLeft: 'var(--item-gap)',
+  backgroundColor: 'var(--item-color)',
+  border: `solid 2px ${theme.vars.palette.background.paper}`,
+  boxShadow: `inset -1px 1px 2px ${varAlpha(theme.vars.palette.common.blackChannel, 0.24)}`,
 }));
 
-const ItemLabel = styled("li")(({ theme }) => ({
+const ItemLabel = styled('li')(({ theme }) => ({
   ...theme.typography.subtitle2,
 }));
