@@ -6,7 +6,7 @@ export const createCandidateSchema = z.object({
     .min(6, "Phone number must be at least 6 characters")
     .optional(),
   location: z.string().min(2, "Location is required").optional(),
-  experience: z.string().optional(),
+  experienceLevel: z.string().optional(),
   skills: z.array(z.string()).optional(),
   languages: z
     .array(z.string().min(2, "Each language must be at least 2 characters"))
