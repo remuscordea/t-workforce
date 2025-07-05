@@ -7,6 +7,7 @@ import App from './app';
 import { client } from './graphql/client';
 import { routesSection } from './routes/sections';
 import { ErrorBoundary } from './routes/components';
+import { AuthProvider } from './context/auth-context';
 
 // ----------------------------------------------------------------------
 
@@ -27,7 +28,9 @@ const root = createRoot(document.getElementById('root')!);
 root.render(
   <StrictMode>
     <ApolloProvider client={client}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ApolloProvider>
   </StrictMode>
 );
