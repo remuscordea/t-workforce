@@ -48,4 +48,9 @@ export const navData = [
     path: '/404',
     icon: icon('ic-disabled'),
   },
+  {
+    title: 'Jobs',
+    path: '/jobs',
+    icon: icon('ic-cart'),
+  },
 ];
