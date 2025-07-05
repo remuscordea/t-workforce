@@ -11,6 +11,7 @@ import { RouterLink } from 'src/routes/components';
 import { Logo } from 'src/components/logo';
 
 import { AuthContent } from './content';
+import { Footer } from '../core/footer';
 import { MainSection } from '../core/main-section';
 import { LayoutSection } from '../core/layout-section';
 import { HeaderSection } from '../core/header-section';
@@ -82,7 +83,7 @@ export function AuthLayout({
     );
   };
 
-  const renderFooter = () => null;
+  const renderFooter = () => <Footer />;
 
   const renderMain = () => (
     <MainSection

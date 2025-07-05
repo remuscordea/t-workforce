@@ -1,3 +1,5 @@
+export * from './footer';
+
 export * from './classes';
 
 export * from './css-vars';

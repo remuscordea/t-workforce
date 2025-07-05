@@ -9,6 +9,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { _langs, _notifications } from 'src/_mock';
 
+import { Footer } from '../core/footer';
 import { NavMobile, NavDesktop } from './nav';
 import { layoutClasses } from '../core/classes';
 import { _account } from '../nav-config-account';
@@ -103,7 +104,7 @@ export function DashboardLayout({
     );
   };
 
-  const renderFooter = () => null;
+  const renderFooter = () => <Footer />;
 
   const renderMain = () => <MainSection {...slotProps?.main}>{children}</MainSection>;
 
