@@ -1,15 +1,17 @@
-import { useState, useCallback } from 'react';
+import { useMutation } from '@apollo/client';
+import { useState, useCallback, type FormEvent } from 'react';
 
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { useRouter } from 'src/routes/hooks';
+
+import { LOGIN_MUTATION } from 'src/graphql/mutations';
 
 import { Iconify } from 'src/components/iconify';
 
@@ -19,13 +21,28 @@ export function SignInView() {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSignIn = useCallback(() => {
-    router.push('/');
-  }, [router]);
+  const [login, { error, loading }] = useMutation(LOGIN_MUTATION, {
+    onCompleted: (data) => {
+      localStorage.setItem('token', data.login.token);
+      router.push('/');
+    },
+  });
+
+  const handleSignIn = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      login({ variables: { input: { email, password } } });
+    },
+    [login, email, password]
+  );
 
   const renderForm = (
     <Box
+      component="form"
+      onSubmit={handleSignIn}
       sx={{
         display: 'flex',
         alignItems: 'flex-end',
@@ -36,7 +53,8 @@ export function SignInView() {
         fullWidth
         name="email"
         label="Email address"
-        defaultValue="hello@gmail.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         sx={{ mb: 3 }}
         slotProps={{
           inputLabel: { shrink: true },
@@ -51,7 +69,8 @@ export function SignInView() {
         fullWidth
         name="password"
         label="Password"
-        defaultValue="@demo1234"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         type={showPassword ? 'text' : 'password'}
         slotProps={{
           inputLabel: { shrink: true },
@@ -74,10 +93,15 @@ export function SignInView() {
         type="submit"
         color="inherit"
         variant="contained"
-        onClick={handleSignIn}
+        disabled={loading}
       >
         Sign in
       </Button>
+      {error && (
+        <Typography color="error" variant="body2" sx={{ mt: 1 }}>
+          {error.message}
+        </Typography>
+      )}
     </Box>
   );
 
