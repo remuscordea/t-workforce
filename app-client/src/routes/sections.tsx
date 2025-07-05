@@ -1,8 +1,8 @@
 import type { RouteObject } from 'react-router';
 
 import { lazy, Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
 import { varAlpha } from 'minimal-shared/utils';
+import { Outlet, Navigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
@@ -40,14 +40,24 @@ const renderFallback = () => (
   </Box>
 );
 
+function AuthGuard({ children }: { children: React.ReactNode }) {
+  const isAuthenticated = Boolean(localStorage.getItem('token'));
+  if (!isAuthenticated) {
+    return <Navigate to="/sign-in" replace />;
+  }
+  return <>{children}</>;
+}
+
 export const routesSection: RouteObject[] = [
   {
     element: (
-      <DashboardLayout>
-        <Suspense fallback={renderFallback()}>
-          <Outlet />
-        </Suspense>
-      </DashboardLayout>
+      <AuthGuard>
+        <DashboardLayout>
+          <Suspense fallback={renderFallback()}>
+            <Outlet />
+          </Suspense>
+        </DashboardLayout>
+      </AuthGuard>
     ),
     children: [
       { index: true, element: <DashboardPage /> },
