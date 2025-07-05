@@ -16,17 +16,16 @@
     "fm:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "fix:all": "npm run lint:fix && npm run fm:fix",
     "clean": "rm -rf node_modules .next out dist build",
-    "re:dev": "yarn clean && yarn install && yarn dev",
-    "re:build": "yarn clean && yarn install && yarn build",
+    "re:dev": "npm run clean && npm install && npm run dev",
+    "re:build": "npm run clean && npm install && npm run build",
     "re:build-npm": "npm run clean && npm install && npm run build",
-    "tsc:dev": "yarn dev & yarn tsc:watch",
+    "tsc:dev": "npm run dev & npm run tsc:watch",
     "tsc:watch": "tsc --noEmit --watch",
     "tsc:print": "npx tsc --showConfig"
   },
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "yarn@1.22.22",
   "dependencies": {
     "@apollo/client": "^3.9.0",
     "@emotion/cache": "^11.14.0",
