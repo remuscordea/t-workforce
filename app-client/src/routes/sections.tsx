@@ -18,6 +18,7 @@ export const UserPage = lazy(() => import('src/pages/user'));
 export const SignInPage = lazy(() => import('src/pages/sign-in'));
 export const SignUpPage = lazy(() => import('src/pages/sign-up'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
+export const JobsPage = lazy(() => import('src/pages/jobs'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
 const renderFallback = () => (
@@ -77,6 +78,16 @@ export const routesSection: RouteObject[] = [
       { path: 'sign-in', element: <SignInPage /> },
       { path: 'sign-up', element: <SignUpPage /> },
     ],
+  },
+  {
+    element: (
+      <DashboardLayout>
+        <Suspense fallback={renderFallback()}>
+          <Outlet />
+        </Suspense>
+      </DashboardLayout>
+    ),
+    children: [{ path: 'jobs', element: <JobsPage /> }],
   },
   // {
   //   path: 'sign-in',
